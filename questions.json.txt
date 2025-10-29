@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "title": "My First Mock",
+    "topic": "Practice Set"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "CRR (Cash Reserve Ratio) is maintained with —",
+      "choices": ["RBI", "Scheduled Banks", "Finance Ministry", "NABARD"],
+      "answer": 0,
+      "explain": "Banks keep a portion of NDTL as cash with RBI."
+    },
+    {
+      "id": "q2",
+      "text": "PSL stands for —",
+      "choices": ["Priority Sector Lending","Public Sector Lending","Primary Secured Loans","Project Support Loans"],
+      "answer": 0,
+      "explain": "Targets for sectors like Agriculture, MSME, etc."
+    }
+  ]
+}
