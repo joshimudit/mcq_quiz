@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "JAIIB Mock Practice Set 1",
+    "topic": "Banking and Financial Awareness"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "CRR (Cash Reserve Ratio) is maintained with —",
+      "choices": [
+        "RBI",
+        "Scheduled Banks",
+        "Finance Ministry",
+        "NABARD"
+      ],
+      "answer": 0,
+      "explain": "Banks keep a portion of NDTL as cash with the Reserve Bank of India."
+    },
+    {
+      "id": "q2",
+      "text": "PSL stands for —",
+      "choices": [
+        "Priority Sector Lending",
+        "Public Sector Lending",
+        "Primary Secured Loans",
+        "Project Support Loans"
+      ],
+      "answer": 0,
+      "explain": "Priority Sector Lending refers to RBI-mandated lending to key sectors like agriculture and MSME."
+    },
+    {
+      "id": "q3",
+      "text": "Which of the following is a liability of a commercial bank?",
+      "choices": [
+        "Deposits",
+        "Loans",
+        "Investments",
+        "Cash in hand"
+      ],
+      "answer": 0,
+      "explain": "Deposits are bank liabilities as they represent money owed to depositors."
+    },
+    {
+      "id": "q4",
+      "text": "In KYC, ‘OCDD’ stands for —",
+      "choices": [
+        "Ongoing Customer Due Diligence",
+        "Online Credit Data Disclosure",
+        "Official Customer Data Directory",
+        "Obligatory Compliance & Data Disclosure"
+      ],
+      "answer": 0,
+      "explain": "OCDD means Ongoing Customer Due Diligence, required for continuous monitoring of accounts."
+    },
+    {
+      "id": "q5",
+      "text": "The head office of NABARD is located in —",
+      "choices": [
+        "Mumbai",
+        "New Delhi",
+        "Chennai",
+        "Hyderabad"
+      ],
+      "answer": 0,
+      "explain": "NABARD headquarters is situated in Mumbai, Maharashtra."
+    }
+  ]
+}
