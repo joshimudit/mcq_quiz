@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "title": "JAIIB IE&IFS Mock – P1 Module A (Set p1ma2)",
+    "topic": "Indian Economy & Indian Financial System (Module A: Globalisation, Reforms, FTP, FDI/FII, IMF/World Bank)"
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "According to the WTO description cited in the notes, globalisation refers primarily to the movement toward what?",
+      "options": [
+        "Regional self-sufficiency in goods and services",
+        "Unrestricted cross-border flows of goods, services, capital, and labour",
+        "Only technology transfer across borders",
+        "Bilateral trade under fixed exchange rates"
+      ],
+      "correctIndex": 1,
+      "explanation": "WTO describes globalisation as movement toward unrestricted cross‑border flows of goods/services, capital and labour."
+    },
+    {
+      "id": "Q2",
+      "question": "Which organisation popularised the term ‘globalisation’ again in the mid‑1980s?",
+      "options": [
+        "World Bank",
+        "OECD",
+        "UNCTAD",
+        "IMF"
+      ],
+      "correctIndex": 1,
+      "explanation": "The notes state that the OECD popularised the term again in the mid‑1980s."
+    },
+    {
+      "id": "Q3",
+      "question": "In India, the concept of globalisation was formally introduced with which policy/time period?",
+      "options": [
+        "New Industrial Policy, 1980–81",
+        "Foreign Trade Policy, 2015–20",
+        "New Economic Policy, 1991–92",
+        "SEZ Act, 2005"
+      ],
+      "correctIndex": 2,
+      "explanation": "Globalisation was formally introduced in India with the New Economic Policy of 1991–92."
+    },
+    {
+      "id": "Q4",
+      "question": "Which of the following is NOT listed as a main form of protectionism in the notes?",
+      "options": [
+        "Tariffs",
+        "Import quotas",
+        "Non‑tariff barriers",
+        "Export subsidies to foreign firms"
+      ],
+      "correctIndex": 3,
+      "explanation": "Protectionism takes three main forms in the notes: tariffs, import quotas, and non‑tariff barriers."
+    },
+    {
+      "id": "Q5",
+      "question": "Deglobalisation in the notes best refers to:",
+      "options": [
+        "Reducing dependency and integration across global units",
+        "Only restricting portfolio flows while allowing trade",
+        "Shifting from WTO to regional FTAs",
+        "Replacing imports entirely by domestic production"
+      ],
+      "correctIndex": 0,
+      "explanation": "Deglobalisation is described as reducing dependency and integration among units across the world."
+    },
+    {
+      "id": "Q6",
+      "question": "Which trio is famously associated with India’s 1991 ‘new economic reforms’?",
+      "options": [
+        "Deregulation, Monetisation, Nationalisation",
+        "Liberalisation, Privatisation, Globalisation",
+        "Protectionism, Import Substitution, Devaluation",
+        "Industrial Licensing, Green Revolution, SEZs"
+      ],
+      "correctIndex": 1,
+      "explanation": "The three pillars are Liberalisation, Privatisation and Globalisation (LPG)."
+    },
+    {
+      "id": "Q7",
+      "question": "Narasimham Committee I (1992) led to RBI issuing which key prudential norms?",
+      "options": [
+        "Income recognition, asset classification and provisioning norms",
+        "Full capital account convertibility",
+        "Branch licensing deregulation only",
+        "Introduction of Goods and Services Tax"
+      ],
+      "correctIndex": 0,
+      "explanation": "Post the committee’s report, RBI issued guidelines on income recognition, asset classification and provisioning in Feb 1992."
+    },
+    {
+      "id": "Q8",
+      "question": "Which is a focus of prudential reforms listed in the notes?",
+      "options": [
+        "Raising SLR/CRR to pre‑reform levels",
+        "Risk‑weighted capital adequacy and mark‑to‑market of investment portfolios",
+        "Full interest rate administration by government",
+        "Elimination of disclosure norms"
+      ],
+      "correctIndex": 1,
+      "explanation": "Prudential reforms include risk‑weighted CAR, appropriate accounting norms, and mark‑to‑market for investments."
+    },
+    {
+      "id": "Q9",
+      "question": "Which supervisory reform was undertaken according to the notes?",
+      "options": [
+        "Abolition of internal audits",
+        "Creation of Board for Financial Supervision and adoption of CAMELS/risk‑based supervision",
+        "Replacing statutory auditors with RBI officers",
+        "Ending consolidated supervision of conglomerates"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Board for Financial Supervision (BFS), CAMELS ratings, risk‑based and consolidated supervision were introduced."
+    },
+    {
+      "id": "Q10",
+      "question": "Which technological backbone/system(s) are cited as part of banking technology reforms?",
+      "options": [
+        "INFINET, Negotiated Dealing System (NDS), and RTGS",
+        "Only NEFT",
+        "Only IMPS and UPI",
+        "SWIFT replacement run by SEBI"
+      ],
+      "correctIndex": 0,
+      "explanation": "Technology reforms include INFINET, NDS for screen‑based G‑Sec trading, and RTGS; alongside ATMs, internet/mobile banking etc."
+    },
+    {
+      "id": "Q11",
+      "question": "Direct Benefit Transfer (DBT) was initially launched by Government of India on:",
+      "options": [
+        "1 January 2013",
+        "15 August 2014",
+        "1 July 2017",
+        "1 March 2010"
+      ],
+      "correctIndex": 0,
+      "explanation": "DBT initiation date in the notes is 1 January 2013."
+    },
+    {
+      "id": "Q12",
+      "question": "Which statement about debt market reforms is correct as per the notes?",
+      "options": [
+        "Government securities pricing remained fully administered",
+        "91‑day Treasury Bills were introduced for liquidity management and benchmarking",
+        "Repos were abolished and only reverse repos continued",
+        "DvP settlement worsened transparency"
+      ],
+      "correctIndex": 1,
+      "explanation": "91‑day T‑bills were introduced; DvP settlement enhanced transparency; LAF set corridor via repo/reverse repo."
+    },
+    {
+      "id": "Q13",
+      "question": "Liquidity Adjustment Facility (LAF) in India primarily operates through:",
+      "options": [
+        "Cash Management Bills only",
+        "Repo and reverse repo auctions to signal overnight rate",
+        "Open Market Operations in equities",
+        "Term repos exclusively"
+      ],
+      "correctIndex": 1,
+      "explanation": "LAF operates via repo and reverse repo auctions to create a corridor for the overnight money market rate."
+    },
+    {
+      "id": "Q14",
+      "question": "The transition in India’s foreign exchange regime described in the notes is:",
+      "options": [
+        "From floating to fixed exchange rate",
+        "From a single‑currency peg to a basket, then to market‑determined floating rate",
+        "From market‑determined to managed peg",
+        "From gold standard to Bretton Woods system post‑1999"
+      ],
+      "correctIndex": 1,
+      "explanation": "The notes describe moving from a single‑currency fixed rate to a basket, then to a market‑determined floating rate."
+    },
+    {
+      "id": "Q15",
+      "question": "Which legislation replaced FERA, 1973 and modernised India’s forex framework?",
+      "options": [
+        "Foreign Exchange Management Act (FEMA), 1999",
+        "SARFAESI Act, 2002",
+        "Banking Regulation Act, 1949",
+        "SEBI Act, 1992"
+      ],
+      "correctIndex": 0,
+      "explanation": "FERA, 1973 was replaced by FEMA, 1999."
+    },
+    {
+      "id": "Q16",
+      "question": "Which set correctly lists participants permitted hedging/derivative use under the forex reforms per notes?",
+      "options": [
+        "Only banks and NRIs",
+        "Exporters, Indians investing abroad, FIIs/FPIs, etc., subject to underlying exposure",
+        "Only resident individuals",
+        "Only public sector undertakings"
+      ],
+      "correctIndex": 1,
+      "explanation": "Participants including exporters, Indians investing abroad and FIIs/NRIs were permitted hedging subject to genuine exposure."
+    },
+    {
+      "id": "Q17",
+      "question": "The Insurance Regulatory and Development Authority (IRDA) was established following which Act/year?",
+      "options": [
+        "IRDA Act, 1999",
+        "Insurance Act, 1938",
+        "Companies Act, 2013",
+        "FRBM Act, 2003"
+      ],
+      "correctIndex": 0,
+      "explanation": "The notes state that IRDA was created under the Insurance Regulatory and Development Act, 1999."
+    },
+    {
+      "id": "Q18",
+      "question": "Which regulator and liberalisation milestone pair for capital markets is correctly matched?",
+      "options": [
+        "SEBI — FIIs permitted since 1992; ADR/GDR/FCCB/ECB access to global capital",
+        "RBI — introduced ADR/GDR",
+        "IRDA — opened equity derivatives in 1992",
+        "SEBI — prohibited FIIs in 1992"
+      ],
+      "correctIndex": 0,
+      "explanation": "SEBI regulates capital markets; FIIs permitted since 1992; Indian corporates could raise via ADRs/GDRs/FCCBs/ECBs."
+    },
+    {
+      "id": "Q19",
+      "question": "FTP 2015–20 merged several merchandise incentive schemes into which single scheme?",
+      "options": [
+        "DEPB",
+        "MEIS (Merchandise Exports from India Scheme)",
+        "RoDTEP",
+        "EPCG"
+      ],
+      "correctIndex": 1,
+      "explanation": "Multiple earlier schemes were merged into MEIS; SEIS introduced for services."
+    },
+    {
+      "id": "Q20",
+      "question": "Under FTP 2015–20/EPCG, when capital goods are procured from domestic manufacturers, what happens to the specific export obligation?",
+      "options": [
+        "Raised to 125% of normal obligation",
+        "Reduced to 75% of normal obligation",
+        "Unchanged at 100% of normal obligation",
+        "Waived entirely"
+      ],
+      "correctIndex": 1,
+      "explanation": "If capital goods are sourced domestically under EPCG, the specific export obligation was reduced to 75% of normal EO."
+    },
+    {
+      "id": "Q21",
+      "question": "Which small‑value e‑commerce exports were eligible for MEIS benefits (values up to ₹25,000) as per FTP 2015–20?",
+      "options": [
+        "Electronics and automobiles",
+        "Handloom, books/periodicals, leather footwear, toys, customised fashion garments",
+        "Crude oil and precious metals",
+        "Bulk chemicals only"
+      ],
+      "correctIndex": 1,
+      "explanation": "Notes list specific low‑value e‑commerce exports like handloom, books, leather footwear, toys, customised garments eligible for MEIS."
+    },
+    {
+      "id": "Q22",
+      "question": "Which pairing of FDI route with example matches the notes?",
+      "options": [
+        "Automatic route — Broadcasting Content Services up to 49%",
+        "Automatic route — Medical devices up to 100%",
+        "Government route — Thermal power up to 100%",
+        "Government route — Only up to 26% in all sectors"
+      ],
+      "correctIndex": 1,
+      "explanation": "Examples in the notes: Automatic route includes medical devices up to 100% (and thermal power up to 100%); Broadcasting Content Services 49% is under government route."
+    },
+    {
+      "id": "Q23",
+      "question": "Which sector is listed as PROHIBITED for FDI in India in the notes?",
+      "options": [
+        "Insurance broking",
+        "Railway infrastructure (select activities)",
+        "Real estate business including construction of farmhouses",
+        "Thermal power"
+      ],
+      "correctIndex": 2,
+      "explanation": "Prohibited list includes lottery, gambling, chit funds, nidhi, TDR trading, real estate business, construction of farmhouses, tobacco manufacturing, atomic energy, core rail operations."
+    },
+    {
+      "id": "Q24",
+      "question": "The IMF came into operation on which date (as per the notes)?",
+      "options": [
+        "27 December 1945",
+        "1 January 1945",
+        "1 March 1947",
+        "22 July 1944"
+      ],
+      "correctIndex": 0,
+      "explanation": "IMF came into operation on 27 December 1945; it began financial operations on 1 March 1947; Bretton Woods conference was in 1944."
+    },
+    {
+      "id": "Q25",
+      "question": "Which statement about Special Drawing Rights (SDR) is correct as per the notes?",
+      "options": [
+        "SDR is a global currency issued by IMF",
+        "SDR is an international reserve asset and a potential claim on freely usable currencies",
+        "SDR can only be used by private banks for trade finance",
+        "SDR requires gold backing to be valid"
+      ],
+      "correctIndex": 1,
+      "explanation": "SDR is not a currency; it is an international reserve asset that provides a potential claim on freely usable member currencies."
+    }
+  ]
+}
