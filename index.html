@@ -105,7 +105,11 @@
     <div class="card" id="card">
       <header>
         <div class="title">Mock MCQ — Quick Practice</div>
-        <div class="pill"><span id="counter">Q 1/—</span></div>
+        <div class="row" style="margin-left:auto; gap:8px; align-items:center">
+          <div class="pill"><span id="counter">Q 1/—</span></div>
+          <button class="ghost" id="loadBtn" title="Load questions JSON">Load JSON</button>
+          <input type="file" id="fileInput" accept="application/json" style="display:none" />
+        </div>
       </header>
 
       <div class="progress" aria-label="progress"><div id="bar"></div></div>
@@ -139,54 +143,93 @@
 
   <!-- QUIZ DATA: edit, add, or remove questions here. Keep ids unique. -->
   <script id="quiz-data" type="application/json">
-  {
-    "meta": {
-      "title": "Banking Basics — Mini Mock",
-      "topic": "JAIIB warm‑up"
-    },
-    "questions": [
-      {
-        "id": "q1",
-        "text": "CRR (Cash Reserve Ratio) is maintained with —",
-        "choices": ["RBI", "Scheduled Banks", "Finance Ministry", "NABARD"],
-        "answer": 0,
-        "explain": "Banks maintain a percentage of their NDTL as cash with the Reserve Bank of India."
-      },
-      {
-        "id": "q2",
-        "text": "PSL stands for —",
-        "choices": ["Priority Sector Lending", "Public Sector Lending", "Primary Secured Loans", "Project Support Loans"],
-        "answer": 0,
-        "explain": "PSL is Priority Sector Lending — targets set by RBI for sectors like agri, MSME, etc."
-      },
-      {
-        "id": "q3",
-        "text": "Which instrument has both debt and equity features?",
-        "choices": ["Commercial Paper", "Preference Shares", "Certificate of Deposit", "Treasury Bill"],
-        "answer": 1,
-        "explain": "Preference shares get fixed dividends (debt‑like) but are equity instruments in structure."
-      },
-      {
-        "id": "q4",
-        "text": "In KYC, ‘OCDD’ generally refers to —",
-        "choices": ["Ongoing Customer Due Diligence", "Online Credit Data Disclosure", "Official Customer Data Directory", "Obligatory Compliance & Data Disclosure"],
-        "answer": 0,
-        "explain": "Banks must monitor customers on an ongoing basis — Ongoing CDD."
-      }
-    ]
-  }
+  { "meta": { "title": "MCQ Quiz" }, "questions": [] }
   </script>
 
   <script>
-    // Utility: read JSON from the embedded script tag
+    // Personalisation
+    const NAME = 'Shruti';
+
+    // Cute minimal aesthetic tweaks
+    document.addEventListener('DOMContentLoaded', () => {
+      document.title = 'Quiz for ' + NAME + ' ✨';
+    });
+
+    // Encouragement pools
+    const PRAISES = [
+      `Lovely, ${NAME}! You nailed it ✨`,
+      `Boom, ${NAME}! Correct and classy.`,
+      `Yes, ${NAME}! Brain = fire today 🔥`,
+      `Queen move, ${NAME}!`,
+      `Sharp as ever, ${NAME} ✅`,
+      `Chef’s kiss, ${NAME} 💫`,
+      `Exactly right, ${NAME}!`,
+      `That’s the spirit, ${NAME}!`,
+      `Perfect pick, ${NAME} 💚`,
+      `On a roll, ${NAME}!`,
+      `Textbook answer, ${NAME}.`,
+      `You’re cruising, ${NAME} 🚀`,
+      `Pro level, ${NAME}!`,
+      `That’s how it’s done, ${NAME}.`,
+      `Genius alert, ${NAME} ✨`,
+      `Green tick for the win, ${NAME}!`,
+      `Immaculate choice, ${NAME}.`,
+      `Love the accuracy, ${NAME}!`,
+      `So good, ${NAME}!`,
+      `Flawless, ${NAME}!`
+    ];
+
+    const ENCOURAGE = [
+      `Close one, ${NAME}. You’ve got this 💪`,
+      `No stress, ${NAME} — onwards we go.`,
+      `Learning in motion, ${NAME}. Next one!`,
+      `Almost there, ${NAME}. Keep the rhythm.`,
+      `You’re improving with every click, ${NAME}.`,
+      `Shake it off, ${NAME}. Fresh start on the next.`,
+      `Good try, ${NAME}! Let’s lock the next one.`,
+      `We move, ${NAME}. Progress > perfection.`,
+      `It’s a stepping stone, ${NAME}.`,
+      `All good, ${NAME}. You’re building mastery.`,
+      `Right idea, wrong option — happens, ${NAME}.`,
+      `Every miss is data, ${NAME}.`,
+      `Chin up, ${NAME}. The next one’s yours.`,
+      `Reset and rock, ${NAME}!`,
+      `You’re still on track, ${NAME}.`,
+      `Heads up, ${NAME}. You’re learning fast.`,
+      `We’re warming up, ${NAME}.`,
+      `Nice attempt, ${NAME}. Keep going.`,
+      `Solid effort, ${NAME}!`,
+      `Not this one — but you’ll get the next, ${NAME}.`
+    ];
+
+    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+    // Utility: read JSON from the embedded (empty) script tag
     function loadQuizFromScript() {
       const el = document.getElementById('quiz-data');
       try { return JSON.parse(el.textContent.trim()); }
       catch (e) { console.error('Quiz JSON parse error', e); return { meta:{title:'Quiz'}, questions: []}; }
     }
 
+    // Try to load external JSON from ?src=... or from file picker
+    async function loadExternalIfAny(){
+      const params = new URLSearchParams(location.search);
+      const src = params.get('src');
+      if (!src) return null;
+      try {
+        const res = await fetch(src, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP '+res.status);
+        const data = await res.json();
+        if (!Array.isArray(data.questions)) throw new Error('questions not array');
+        return data;
+      } catch (e) {
+        console.warn('Failed to load external quiz from', src, e);
+        return null;
+      }
+    }
+
     // State
-    let QUIZ = loadQuizFromScript();
+    let QUIZ = { meta:{ title:'MCQ Quiz' }, questions: [] };
     let idx = 0;
     let selected = new Map(); // id -> {choice, correct}
 
@@ -201,6 +244,8 @@
     const nextBtn = document.getElementById('nextBtn');
     const resetBtn = document.getElementById('resetBtn');
     const shuffleBtn = document.getElementById('shuffleBtn');
+    const loadBtn = document.getElementById('loadBtn');
+    const fileInput = document.getElementById('fileInput');
 
     const end = document.getElementById('end');
     const card = document.getElementById('card');
@@ -208,21 +253,21 @@
     const remark = document.getElementById('remark');
     const againBtn = document.getElementById('againBtn');
 
-    // Render helpers
     function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
     function render() {
       const q = QUIZ.questions[idx];
       const total = QUIZ.questions.length;
-      document.title = QUIZ.meta?.title || 'MCQ Quiz';
+      document.title = (QUIZ.meta?.title || 'MCQ Quiz') + ' — for ' + NAME;
       counter.textContent = `Q ${idx+1}/${total}`;
       bar.style.width = `${((idx) / total) * 100}%`;
-      qEl.textContent = q.text;
+      qEl.textContent = q.text || q.question || '—';
       topicEl.textContent = QUIZ.meta?.topic || '';
       feedbackEl.textContent = '';
 
       optsEl.innerHTML = '';
-      q.choices.forEach((choice, i) => {
+      const choices = q.choices || q.options; // allow either key
+      choices.forEach((choice, i) => {
         const btn = document.createElement('button');
         btn.className = 'btn';
         btn.textContent = choice;
@@ -230,11 +275,8 @@
         optsEl.appendChild(btn);
       });
 
-      // if revisiting, restore selection + feedback
-      const prev = selected.get(q.id);
-      if (prev) {
-        reveal(prev.choice);
-      }
+      const prev = selected.get(q.id || q.qid || idx);
+      if (prev) { reveal(prev.choice); }
 
       prevBtn.disabled = idx === 0;
       nextBtn.textContent = idx === total - 1 ? 'Finish ▶' : 'Next ▶';
@@ -242,76 +284,51 @@
 
     function selectAnswer(i) {
       const q = QUIZ.questions[idx];
-      const isCorrect = i === q.answer;
-      selected.set(q.id, { choice: i, correct: isCorrect });
+      const answerIndex = (typeof q.answer === 'number') ? q.answer : q.correctIndex;
+      const isCorrect = i === answerIndex;
+      selected.set(q.id || q.qid || idx, { choice: i, correct: isCorrect });
       reveal(i);
     }
 
     function reveal(i){
       const q = QUIZ.questions[idx];
       const buttons = [...optsEl.querySelectorAll('.btn')];
-      buttons.forEach((b, bi) => {
-        b.disabled = true;
-        b.style.borderColor = 'rgba(255,255,255,0.12)';
-        b.style.background = '#0b1220';
-      });
-      // color current selection
+      buttons.forEach(b => { b.disabled = true; b.style.borderColor = 'rgba(255,255,255,0.12)'; b.style.background = '#0b1220'; });
+
+      const answerIndex = (typeof q.answer === 'number') ? q.answer : q.correctIndex;
       const picked = buttons[i];
-      if (picked) picked.style.borderColor = (i === q.answer) ? 'rgba(134, 239, 172, 0.7)' : 'rgba(252, 165, 165, 0.7)';
+      if (picked) picked.style.borderColor = (i === answerIndex) ? 'rgba(134, 239, 172, 0.7)' : 'rgba(252, 165, 165, 0.7)';
 
-      // show correct
-      const correctBtn = buttons[q.answer];
-      if (correctBtn) {
-        correctBtn.style.background = 'linear-gradient(180deg, #064e3b, #052e2b)';
-        correctBtn.style.borderColor = 'rgba(134, 239, 172, 0.8)';
-      }
+      const correctBtn = buttons[answerIndex];
+      if (correctBtn) { correctBtn.style.background = 'linear-gradient(180deg, #064e3b, #052e2b)'; correctBtn.style.borderColor = 'rgba(134, 239, 172, 0.8)'; }
 
-      feedbackEl.innerHTML = (i === q.answer)
-        ? `<span class="ok">✅ Correct!</span>`
-        : `<span class="bad">❌ Incorrect.</span> Correct answer: <strong>${q.choices[q.answer]}</strong><br><span class="muted">${q.explain || ''}</span>`;
+      const choices = q.choices || q.options;
+      const base = (i === answerIndex)
+        ? `<span class="ok">✅ Correct!</span> <span class="muted">${pick(PRAISES)}</span>`
+        : `<span class="bad">❌ Incorrect.</span> Correct: <strong>${choices[answerIndex]}</strong><br><span class="muted">${q.explain || q.explanation || ''}</span><br><span class="muted">${pick(ENCOURAGE)}</span>`;
+      feedbackEl.innerHTML = base;
     }
 
-    function next(){
-      if (idx < QUIZ.questions.length - 1) {
-        idx++; render();
-      } else {
-        finish();
-      }
-    }
+    function next(){ if (idx < QUIZ.questions.length - 1) { idx++; render(); } else { finish(); } }
     function prev(){ idx = clamp(idx-1, 0, QUIZ.questions.length-1); render(); }
 
     function finish(){
       bar.style.width = '100%';
       const total = QUIZ.questions.length;
-      let correct = 0; for (const q of QUIZ.questions){ if (selected.get(q.id)?.correct) correct++; }
+      let correct = 0; for (const q of QUIZ.questions){ if (selected.get(q.id || q.qid || q)? .correct) correct++; }
       scoreLine.textContent = `${correct} / ${total}`;
-      remark.textContent = funRemark(correct, total);
+      const pct = (correct/total)*100;
+      remark.textContent = pct >= 80 ? `Superb, ${NAME}! You’re exam-ready.`
+        : pct >= 60 ? `Nice progress, ${NAME}. One more pass and you’re set.`
+        : `Good hustle, ${NAME}. A quick revision and try again.`;
       card.style.display = 'none';
       end.style.display = 'block';
     }
 
-    function reset(all=true){
-      if (all){ selected.clear(); idx = 0; }
-      card.style.display = 'block'; end.style.display = 'none';
-      render();
-    }
-
-    function funRemark(c, t){
-      const pct = (c/t)*100;
-      if (pct === 100) return "💯 Legend! Perfect score. Treat yourself to chai.";
-      if (pct >= 80) return "🔥 Strong game. You’d ace the real thing.";
-      if (pct >= 60) return "👍 Good stuff. A quick revision will push you over the top.";
-      if (pct >= 40) return "🙂 Not bad. A little grind and you’re golden.";
-      return "🧠 Every pro was once a beginner. Want to try a fresh set now?";
-    }
+    function reset(all=true){ if (all){ selected.clear(); idx = 0; } card.style.display = 'block'; end.style.display = 'none'; render(); }
 
     function shuffle(){
-      // Fisher–Yates on the questions array
-      for (let i = QUIZ.questions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [QUIZ.questions[i], QUIZ.questions[j]] = [QUIZ.questions[j], QUIZ.questions[i]];
-      }
-      // also clear state
+      for (let i = QUIZ.questions.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [QUIZ.questions[i], QUIZ.questions[j]] = [QUIZ.questions[j], QUIZ.questions[i]]; }
       selected.clear(); idx = 0; render();
     }
 
@@ -322,13 +339,31 @@
     shuffleBtn.addEventListener('click', shuffle);
     againBtn.addEventListener('click', () => reset(true));
 
-    // Start
-    if (!Array.isArray(QUIZ.questions) || QUIZ.questions.length === 0) {
-      qEl.textContent = 'No questions found — add some in the JSON block below.';
-      nextBtn.disabled = true; prevBtn.disabled = true; shuffleBtn.disabled = true; resetBtn.disabled = true;
-    } else {
-      render();
-    }
+    loadBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (ev) => {
+      const f = ev.target.files?.[0]; if (!f) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const json = JSON.parse(String(reader.result));
+          if (!Array.isArray(json.questions)) throw new Error('Expected {questions: [...]}');
+          QUIZ = json; selected.clear(); idx = 0; reset(true);
+        } catch (e){ alert('Invalid JSON file. Expected { meta, questions: [...] }'); console.error(e); }
+      };
+      reader.readAsText(f);
+    });
+
+    // Boot: prefer external, fall back to empty embedded (forces user to load JSON)
+    (async function boot(){
+      const ext = await loadExternalIfAny();
+      if (ext) { QUIZ = ext; render(); return; }
+      const embedded = loadQuizFromScript();
+      if (Array.isArray(embedded.questions) && embedded.questions.length > 0) { QUIZ = embedded; render(); return; }
+      // No questions found: show hint
+      const hint = 'No questions loaded. Use the "Load JSON" button above or append ?src=yourfile.json to the URL.';
+      qEl.textContent = hint;
+      nextBtn.disabled = true; prevBtn.disabled = true; shuffleBtn.disabled = true; resetBtn.disabled = false;
+    })();
   </script>
 </body>
 </html>
