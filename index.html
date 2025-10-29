@@ -148,7 +148,7 @@
 
   <script>
     // Personalisation
-    const NAME = 'Shrutiii';
+    const NAME = 'Shruti';
 
     // Cute minimal aesthetic tweaks
     document.addEventListener('DOMContentLoaded', () => {
@@ -315,7 +315,7 @@
     function finish(){
       bar.style.width = '100%';
       const total = QUIZ.questions.length;
-      let correct = 0; for (const q of QUIZ.questions){ if (selected.get(q.id || q.qid || q)? .correct) correct++; }
+      let correct = 0; for (const q of QUIZ.questions){ if (selected.get(q.id || q.qid || q)?.correct) correct++; }
       scoreLine.textContent = `${correct} / ${total}`;
       const pct = (correct/total)*100;
       remark.textContent = pct >= 80 ? `Superb, ${NAME}! You’re exam-ready.`
@@ -355,14 +355,18 @@
 
     // Boot: prefer external, fall back to empty embedded (forces user to load JSON)
     (async function boot(){
-      const ext = await loadExternalIfAny();
-      if (ext) { QUIZ = ext; render(); return; }
-      const embedded = loadQuizFromScript();
-      if (Array.isArray(embedded.questions) && embedded.questions.length > 0) { QUIZ = embedded; render(); return; }
-      // No questions found: show hint
-      const hint = 'No questions loaded. Use the "Load JSON" button above or append ?src=yourfile.json to the URL.';
-      qEl.textContent = hint;
-      nextBtn.disabled = true; prevBtn.disabled = true; shuffleBtn.disabled = true; resetBtn.disabled = false;
+      try {
+        const ext = await loadExternalIfAny();
+        if (ext) { QUIZ = ext; render(); return; }
+        const embedded = loadQuizFromScript();
+        if (Array.isArray(embedded.questions) && embedded.questions.length > 0) { QUIZ = embedded; render(); return; }
+        const hint = 'No questions loaded. Use the "Load JSON" button or append ?src=yourfile.json to the URL.';
+        qEl.textContent = hint;
+        nextBtn.disabled = true; prevBtn.disabled = true; shuffleBtn.disabled = true; resetBtn.disabled = false;
+      } catch (e) {
+        qEl.textContent = 'Error loading questions. Open console for details (F12) or use Load JSON.';
+        console.error('Boot error:', e);
+      }
     })();
   </script>
 </body>
