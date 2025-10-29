@@ -1,373 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quick MCQ Quiz</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz for Shrutiii ✨</title>
   <style>
-    :root {
-      --bg: #0b0d10; /* near-black */
-      --card: #11151a; /* dark slate */
-      --ink: #e7edf3; /* soft white */
-      --muted: #9fb3c8; /* desaturated blue-gray */
-      --accent: #7dd3fc; /* sky */
-      --accent-2: #86efac; /* green */
-      --warn: #fca5a5; /* red-rose */
-      --ring: #1f2937;
-      --radius: 18px;
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #0b1220, #1a2135);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 1200px at 80% -10%, #0f172a 0%, var(--bg) 60%);
-      color: var(--ink);
-      display: grid;
-      place-items: center;
-      padding: 24px;
+      padding: 0 1rem;
     }
-
-    .shell {
-      width: min(860px, 100%);
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      backdrop-filter: blur(4px);
-      padding: 22px;
-    }
-
     header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; margin-bottom: 14px;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
     }
-    .title { font-size: clamp(18px, 2.4vw, 24px); font-weight: 700; letter-spacing: .2px; }
-    .muted { color: var(--muted); font-size: 14px; }
-
-    .progress {
-      width: 100%; height: 8px; border-radius: 999px;
-      background: #0f172a; overflow: hidden; border: 1px solid #111827;
-    }
-    .progress > div { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
-
-    .q {
-      margin-top: 16px; margin-bottom: 10px; font-size: clamp(18px, 2.6vw, 22px);
-      line-height: 1.4; font-weight: 600;
-    }
-
-    .opts { display: grid; gap: 10px; margin-top: 12px; }
-    .btn {
-      width: 100%; text-align: left; padding: 14px 16px; border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08); background: #0b1220; color: var(--ink);
-      cursor: pointer; font-size: 16px; transition: transform .06s ease, background .2s ease, border-color .2s ease;
-    }
-    .btn:hover { transform: translateY(-1px); border-color: rgba(125,211,252,0.4); }
-    .btn[disabled] { opacity: .7; cursor: not-allowed; }
-
-    .pill {
-      display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12); background:#0b1220; font-size: 12px; color: var(--muted);
-    }
-
-    .feedback { margin-top: 12px; font-size: 15px; }
-    .ok { color: var(--accent-2); }
-    .bad { color: var(--warn); }
-
-    .row { display:flex; gap:10px; flex-wrap: wrap; align-items: center; }
-    .spacer { height: 12px; }
-
-    .foot { display:flex; justify-content: space-between; align-items:center; margin-top: 18px; }
-    .ghost {
-      background: transparent; border: 1px dashed rgba(255,255,255,0.15); color: var(--muted);
-      border-radius: 12px; padding: 10px 14px; cursor: pointer; font-size: 14px;
-    }
-    .primary { background: linear-gradient(180deg, #0ea5e9, #22d3ee); color: #05202b; border: none; font-weight: 700; }
-
-    .endcard { text-align: center; padding: 28px 18px; }
-    .score {
-      font-size: 42px; font-weight: 800; letter-spacing: 1px; margin: 10px 0 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .cta { margin-top: 14px; }
-
-    /* mobile-safe spacing for bottom buttons */
-    @media (max-width:520px){ .btn { padding: 12px 12px; } }
+    .title { font-size: 1.3rem; font-weight: 600; }
+    .pill { background: rgba(255,255,255,0.1); padding: 0.3rem 0.7rem; border-radius: 999px; }
+    button { background: #facc15; border: none; border-radius: 12px; padding: 0.6rem 1rem; font-weight: 600; cursor: pointer; color: #222; }
+    button:hover { filter: brightness(1.1); }
+    #card { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2rem; width: 100%; max-width: 600px; box-shadow: 0 0 20px rgba(255,255,255,0.05); }
+    #question { font-size: 1.2rem; margin-bottom: 1rem; }
+    .btn { display:block; margin: 0.5rem 0; width:100%; padding:0.6rem; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:#1f2937; color:#fff; text-align:left; cursor:pointer; }
+    .btn:hover { background:#374151; }
+    #feedback { margin-top:1rem; font-size:1rem; color:#facc15; }
+    #end { display:none; text-align:center; max-width:700px; }
+    #end h2 { color:#facc15; font-size:2rem; }
+    #end .note { color:#fde68a; font-size:1.1rem; line-height:1.6; }
+    #end .rewards { background:rgba(255,255,255,0.05); padding:1rem; border-radius:12px; margin-top:1rem; text-align:left; }
+    #end .rewards ul { list-style:none; padding-left:0; }
+    #end .rewards li { margin:0.3rem 0; }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="card" id="card">
-      <header>
-        <div class="title">Mock MCQ — Quick Practice</div>
-        <div class="row" style="margin-left:auto; gap:8px; align-items:center">
-          <div class="pill"><span id="counter">Q 1/—</span></div>
-          <button class="ghost" id="loadBtn" title="Load questions JSON">Load JSON</button>
-          <input type="file" id="fileInput" accept="application/json" style="display:none" />
-        </div>
-      </header>
+  <header>
+    <div class="title">Mock MCQ — Quick Practice</div>
+    <div class="pill"><span id="counter">Q 1/—</span></div>
+  </header>
 
-      <div class="progress" aria-label="progress"><div id="bar"></div></div>
-
-      <div class="q" id="question">Loading…</div>
-      <div class="muted" id="topic"></div>
-      <div class="opts" id="options"></div>
-      <div class="feedback" id="feedback"></div>
-
-      <div class="foot">
-        <button class="ghost" id="prevBtn" aria-label="Previous question">◀ Prev</button>
-        <div class="row">
-          <button class="ghost" id="resetBtn" aria-label="Reset quiz">Reset</button>
-          <button class="ghost" id="shuffleBtn" aria-label="Shuffle questions">Shuffle</button>
-          <button class="primary" id="nextBtn" aria-label="Next question">Next ▶</button>
-        </div>
-      </div>
+  <div id="card">
+    <div id="question">Loading questions...</div>
+    <div id="options"></div>
+    <div id="feedback"></div>
+    <div style="margin-top:1rem; display:flex; justify-content:space-between;">
+      <button id="prevBtn">◀ Prev</button>
+      <button id="nextBtn">Next ▶</button>
     </div>
-
-    <div class="card endcard" id="end" style="display:none">
-      <div class="title">All done!</div>
-      <div class="score" id="scoreLine">0 / 0</div>
-      <div class="muted" id="remark">Nice work ✨</div>
-      <div class="cta">
-        <button class="primary" id="againBtn">Try Again</button>
-      </div>
-    </div>
-
-    <div class="muted" style="margin-top:10px; text-align:center; font-size:12px">Edit questions inside this file → scroll to the <strong>Quiz Data</strong> block.</div>
   </div>
 
-  <!-- QUIZ DATA: edit, add, or remove questions here. Keep ids unique. -->
-  <script id="quiz-data" type="application/json">
-  { "meta": { "title": "MCQ Quiz" }, "questions": [] }
-  </script>
+  <div id="end">
+    <h2>🌼 For Shrutiii 💛</h2>
+    <p class="note">You showed up, gave it your best, learned, stumbled, smiled, and tried again — that’s what winning really looks like. Watching you grow, chase your goals, and keep showing up for yourself makes me quietly proud every single time.<br><br>
+    You have this spark, <b>Shrutiii</b> — the kind that turns ordinary days into little victories. Keep chasing that light, I’ll always be here in your corner, rooting for you through every twist and turn. 🌻✨<br>
+    Because seeing you win — in exams, in life, in those tiny daily battles — is my favorite thing to watch. 🌱💛</p>
+
+    <h3 style="color:#fde68a; margin-top:2rem;">💫 “Make Mujo Poor” Challenge — Official & Totally Real™ 😄</h3>
+    <div class="rewards">
+      <p>Each quiz earns you stars ⭐. The more you collect, the more you <b>legally bankrupt Mujo</b> (and he’ll enjoy every second of it 🤭).</p>
+      <p><b>Star System:</b><br>
+      ≥ 75% → 3 ⭐<br>
+      50–74% → 2 ⭐<br>
+      25–49% → 1 ⭐<br>
+      < 25% → 0 ⭐ (but still hug-worthy 💛)</p>
+      <p><b>Rewards (to keep Mujo humble):</b></p>
+      <ul>
+        <li>12 ⭐ → Food treat from Mujo 🍱✨</li>
+        <li>15 ⭐ → New office kurti of your choice 👗🌼</li>
+        <li>20 ⭐ → A blind wish — you make it, Mujo makes it happen. No loopholes. No questions. Just yes. 🌟🪄</li>
+      </ul>
+      <p style="text-align:center; font-size:1.1rem; color:#facc15;">Collect your stars, keep playing, and let’s see how expensive your success becomes 😄💛</p>
+    </div>
+    <div style="margin-top:2rem;">
+      <div id="scoreLine" style="font-size:1.4rem; color:#facc15;"></div>
+      <div id="remark" style="font-size:1.2rem; margin-top:0.5rem; color:#fde68a;"></div>
+      <button id="againBtn" style="margin-top:1.5rem; background:#facc15; color:#222;">Play Again</button>
+    </div>
+  </div>
 
   <script>
-    // Personalisation
-    const NAME = 'Shruti';
+    const NAME = 'Shrutiii';
 
-    // Cute minimal aesthetic tweaks
-    document.addEventListener('DOMContentLoaded', () => {
-      document.title = 'Quiz for ' + NAME + ' ✨';
-    });
-
-    // Encouragement pools
     const PRAISES = [
-      `Lovely, ${NAME}! You nailed it ✨`,
-      `Boom, ${NAME}! Correct and classy.`,
-      `Yes, ${NAME}! Brain = fire today 🔥`,
-      `Queen move, ${NAME}!`,
-      `Sharp as ever, ${NAME} ✅`,
-      `Chef’s kiss, ${NAME} 💫`,
-      `Exactly right, ${NAME}!`,
-      `That’s the spirit, ${NAME}!`,
-      `Perfect pick, ${NAME} 💚`,
-      `On a roll, ${NAME}!`,
-      `Textbook answer, ${NAME}.`,
-      `You’re cruising, ${NAME} 🚀`,
-      `Pro level, ${NAME}!`,
-      `That’s how it’s done, ${NAME}.`,
-      `Genius alert, ${NAME} ✨`,
-      `Green tick for the win, ${NAME}!`,
-      `Immaculate choice, ${NAME}.`,
-      `Love the accuracy, ${NAME}!`,
-      `So good, ${NAME}!`,
-      `Flawless, ${NAME}!`
+      `🌟 Lovely, ${NAME}! You nailed it 💛`,
+      `✨ Boom, ${NAME}! Correct and classy 💛`,
+      `🌻 Yes, ${NAME}! Brain = fire today 🔥💛`,
+      `🌼 Queen move, ${NAME}! 💛`,
+      `💫 Sharp as ever, ${NAME}! 💛`,
+      `🌱 Perfect pick, ${NAME}! 💛`,
+      `🌸 That’s the spirit, ${NAME}! 💛`,
+      `☀️ On a roll, ${NAME}! 💛`,
+      `⭐ Genius alert, ${NAME}! 💛`,
+      `🌷 So good, ${NAME}! 💛`
     ];
 
     const ENCOURAGE = [
-      `Close one, ${NAME}. You’ve got this 💪`,
-      `No stress, ${NAME} — onwards we go.`,
-      `Learning in motion, ${NAME}. Next one!`,
-      `Almost there, ${NAME}. Keep the rhythm.`,
-      `You’re improving with every click, ${NAME}.`,
-      `Shake it off, ${NAME}. Fresh start on the next.`,
-      `Good try, ${NAME}! Let’s lock the next one.`,
-      `We move, ${NAME}. Progress > perfection.`,
-      `It’s a stepping stone, ${NAME}.`,
-      `All good, ${NAME}. You’re building mastery.`,
-      `Right idea, wrong option — happens, ${NAME}.`,
-      `Every miss is data, ${NAME}.`,
-      `Chin up, ${NAME}. The next one’s yours.`,
-      `Reset and rock, ${NAME}!`,
-      `You’re still on track, ${NAME}.`,
-      `Heads up, ${NAME}. You’re learning fast.`,
-      `We’re warming up, ${NAME}.`,
-      `Nice attempt, ${NAME}. Keep going.`,
-      `Solid effort, ${NAME}!`,
-      `Not this one — but you’ll get the next, ${NAME}.`
+      `🌿 Close one, ${NAME}. You’ve got this 💛`,
+      `🍋 No stress, ${NAME} — onwards we go 💛`,
+      `🌼 Learning in motion, ${NAME} 💛`,
+      `🌻 Almost there, ${NAME}. Keep going 💛`,
+      `🌱 You’re improving with every click, ${NAME} 💛`,
+      `🌞 Shake it off, ${NAME}. Fresh start next 💛`,
+      `🍃 Good try, ${NAME}! Let’s lock the next one 💛`,
+      `✨ We move, ${NAME}. Progress > perfection 💛`,
+      `🌾 Chin up, ${NAME}. The next one’s yours 💛`,
+      `🌻 Nice attempt, ${NAME}. Keep growing 💛`
     ];
 
-    function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+    const counter=document.getElementById('counter');
+    const qEl=document.getElementById('question');
+    const optsEl=document.getElementById('options');
+    const feedbackEl=document.getElementById('feedback');
+    const prevBtn=document.getElementById('prevBtn');
+    const nextBtn=document.getElementById('nextBtn');
+    const card=document.getElementById('card');
+    const end=document.getElementById('end');
+    const scoreLine=document.getElementById('scoreLine');
+    const remark=document.getElementById('remark');
+    const againBtn=document.getElementById('againBtn');
 
-    // Utility: read JSON from the embedded (empty) script tag
-    function loadQuizFromScript() {
-      const el = document.getElementById('quiz-data');
-      try { return JSON.parse(el.textContent.trim()); }
-      catch (e) { console.error('Quiz JSON parse error', e); return { meta:{title:'Quiz'}, questions: []}; }
-    }
+    let QUIZ={meta:{title:'Quiz'},questions:[]};
+    let idx=0;let selected=new Map();
 
-    // Try to load external JSON from ?src=... or from file picker
+    function pick(a){return a[Math.floor(Math.random()*a.length)];}
+
     async function loadExternalIfAny(){
-      const params = new URLSearchParams(location.search);
-      const src = params.get('src');
-      if (!src) return null;
-      try {
-        const res = await fetch(src, { cache: 'no-store' });
-        if (!res.ok) throw new Error('HTTP '+res.status);
-        const data = await res.json();
-        if (!Array.isArray(data.questions)) throw new Error('questions not array');
-        return data;
-      } catch (e) {
-        console.warn('Failed to load external quiz from', src, e);
-        return null;
-      }
+      const src=new URLSearchParams(location.search).get('src');
+      if(!src)return null;
+      try{const res=await fetch(src);if(!res.ok)throw new Error(res.status);const d=await res.json();return d;}catch(e){console.error(e);return null;}
     }
 
-    // State
-    let QUIZ = { meta:{ title:'MCQ Quiz' }, questions: [] };
-    let idx = 0;
-    let selected = new Map(); // id -> {choice, correct}
-
-    // DOM refs
-    const counter = document.getElementById('counter');
-    const bar = document.getElementById('bar');
-    const qEl = document.getElementById('question');
-    const topicEl = document.getElementById('topic');
-    const optsEl = document.getElementById('options');
-    const feedbackEl = document.getElementById('feedback');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const shuffleBtn = document.getElementById('shuffleBtn');
-    const loadBtn = document.getElementById('loadBtn');
-    const fileInput = document.getElementById('fileInput');
-
-    const end = document.getElementById('end');
-    const card = document.getElementById('card');
-    const scoreLine = document.getElementById('scoreLine');
-    const remark = document.getElementById('remark');
-    const againBtn = document.getElementById('againBtn');
-
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-    function render() {
-      const q = QUIZ.questions[idx];
-      const total = QUIZ.questions.length;
-      document.title = (QUIZ.meta?.title || 'MCQ Quiz') + ' — for ' + NAME;
-      counter.textContent = `Q ${idx+1}/${total}`;
-      bar.style.width = `${((idx) / total) * 100}%`;
-      qEl.textContent = q.text || q.question || '—';
-      topicEl.textContent = QUIZ.meta?.topic || '';
-      feedbackEl.textContent = '';
-
-      optsEl.innerHTML = '';
-      const choices = q.choices || q.options; // allow either key
-      choices.forEach((choice, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'btn';
-        btn.textContent = choice;
-        btn.addEventListener('click', () => selectAnswer(i));
-        optsEl.appendChild(btn);
+    function render(){
+      const q=QUIZ.questions[idx];
+      if(!q){finish();return;}
+      counter.textContent=`Q ${idx+1}/${QUIZ.questions.length}`;
+      qEl.textContent=q.text||q.question;
+      optsEl.innerHTML='';
+      (q.choices||q.options).forEach((ch,i)=>{
+        const b=document.createElement('button');b.className='btn';b.textContent=ch;b.onclick=()=>select(i);optsEl.appendChild(b);
       });
-
-      const prev = selected.get(q.id || q.qid || idx);
-      if (prev) { reveal(prev.choice); }
-
-      prevBtn.disabled = idx === 0;
-      nextBtn.textContent = idx === total - 1 ? 'Finish ▶' : 'Next ▶';
+      feedbackEl.textContent='';
+      prevBtn.disabled=idx===0;
+      nextBtn.textContent=idx===QUIZ.questions.length-1?'Finish ▶':'Next ▶';
     }
 
-    function selectAnswer(i) {
-      const q = QUIZ.questions[idx];
-      const answerIndex = (typeof q.answer === 'number') ? q.answer : q.correctIndex;
-      const isCorrect = i === answerIndex;
-      selected.set(q.id || q.qid || idx, { choice: i, correct: isCorrect });
-      reveal(i);
+    function select(i){
+      const q=QUIZ.questions[idx];const a=(typeof q.answer==='number')?q.answer:q.correctIndex;const correct=i===a;
+      selected.set(q.id||idx,{choice:i,correct});
+      const bs=[...optsEl.children];bs.forEach((b,x)=>{b.disabled=true;if(x===a)b.style.background='#064e3b';});
+      feedbackEl.innerHTML=(correct?`✅ <span style='color:#facc15;'>${pick(PRAISES)}</span>`:`❌ Correct: <b>${(q.choices||q.options)[a]}</b><br><span style='color:#facc15;'>${pick(ENCOURAGE)}</span>`);
     }
 
-    function reveal(i){
-      const q = QUIZ.questions[idx];
-      const buttons = [...optsEl.querySelectorAll('.btn')];
-      buttons.forEach(b => { b.disabled = true; b.style.borderColor = 'rgba(255,255,255,0.12)'; b.style.background = '#0b1220'; });
-
-      const answerIndex = (typeof q.answer === 'number') ? q.answer : q.correctIndex;
-      const picked = buttons[i];
-      if (picked) picked.style.borderColor = (i === answerIndex) ? 'rgba(134, 239, 172, 0.7)' : 'rgba(252, 165, 165, 0.7)';
-
-      const correctBtn = buttons[answerIndex];
-      if (correctBtn) { correctBtn.style.background = 'linear-gradient(180deg, #064e3b, #052e2b)'; correctBtn.style.borderColor = 'rgba(134, 239, 172, 0.8)'; }
-
-      const choices = q.choices || q.options;
-      const base = (i === answerIndex)
-        ? `<span class="ok">✅ Correct!</span> <span class="muted">${pick(PRAISES)}</span>`
-        : `<span class="bad">❌ Incorrect.</span> Correct: <strong>${choices[answerIndex]}</strong><br><span class="muted">${q.explain || q.explanation || ''}</span><br><span class="muted">${pick(ENCOURAGE)}</span>`;
-      feedbackEl.innerHTML = base;
-    }
-
-    function next(){ if (idx < QUIZ.questions.length - 1) { idx++; render(); } else { finish(); } }
-    function prev(){ idx = clamp(idx-1, 0, QUIZ.questions.length-1); render(); }
+    function next(){if(idx<QUIZ.questions.length-1){idx++;render();}else finish();}
+    function prev(){idx=Math.max(0,idx-1);render();}
 
     function finish(){
-      bar.style.width = '100%';
-      const total = QUIZ.questions.length;
-      let correct = 0; for (const q of QUIZ.questions){ if (selected.get(q.id || q.qid || q)?.correct) correct++; }
-      scoreLine.textContent = `${correct} / ${total}`;
-      const pct = (correct/total)*100;
-      remark.textContent = pct >= 80 ? `Superb, ${NAME}! You’re exam-ready.`
-        : pct >= 60 ? `Nice progress, ${NAME}. One more pass and you’re set.`
-        : `Good hustle, ${NAME}. A quick revision and try again.`;
-      card.style.display = 'none';
-      end.style.display = 'block';
+      let correct=0;for(const q of QUIZ.questions){if(selected.get(q.id||q)?.correct)correct++;}
+      const total=QUIZ.questions.length;const pct=(correct/total)*100;card.style.display='none';end.style.display='block';
+      const stars=pct>=75?3:pct>=50?2:pct>=25?1:0;let starsStr='';for(let i=0;i<stars;i++)starsStr+='⭐';if(stars===0)starsStr='—';
+      scoreLine.innerHTML=`Score: <b>${correct}/${total}</b> • ${pct.toFixed(1)}%<br>Stars Earned: <b style='color:#facc15;'>${starsStr}</b>`;
+      let msg='';if(stars===3)msg=`Legend mode unlocked, ${NAME}! ✨ You're glowing and growing. ☀️💛`;
+      else if(stars===2)msg=`Rock-solid progress, ${NAME}! 🌼 One more pass and you'll sparkle brighter 💛`;
+      else if(stars===1)msg=`Beautiful effort, ${NAME}! 🌿 You're stacking wisdom—next round will bloom 💛`;
+      else msg=`Every seed takes time, ${NAME}! 🌱 You showed up—that’s the win 💛`;
+      remark.textContent=msg;
     }
 
-    function reset(all=true){ if (all){ selected.clear(); idx = 0; } card.style.display = 'block'; end.style.display = 'none'; render(); }
+    prevBtn.onclick=prev;nextBtn.onclick=next;againBtn.onclick=()=>location.reload();
 
-    function shuffle(){
-      for (let i = QUIZ.questions.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [QUIZ.questions[i], QUIZ.questions[j]] = [QUIZ.questions[j], QUIZ.questions[i]]; }
-      selected.clear(); idx = 0; render();
-    }
-
-    // Bind
-    nextBtn.addEventListener('click', next);
-    prevBtn.addEventListener('click', prev);
-    resetBtn.addEventListener('click', () => reset(true));
-    shuffleBtn.addEventListener('click', shuffle);
-    againBtn.addEventListener('click', () => reset(true));
-
-    loadBtn.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', (ev) => {
-      const f = ev.target.files?.[0]; if (!f) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          const json = JSON.parse(String(reader.result));
-          if (!Array.isArray(json.questions)) throw new Error('Expected {questions: [...]}');
-          QUIZ = json; selected.clear(); idx = 0; reset(true);
-        } catch (e){ alert('Invalid JSON file. Expected { meta, questions: [...] }'); console.error(e); }
-      };
-      reader.readAsText(f);
-    });
-
-    // Boot: prefer external, fall back to empty embedded (forces user to load JSON)
-    (async function boot(){
-      try {
-        const ext = await loadExternalIfAny();
-        if (ext) { QUIZ = ext; render(); return; }
-        const embedded = loadQuizFromScript();
-        if (Array.isArray(embedded.questions) && embedded.questions.length > 0) { QUIZ = embedded; render(); return; }
-        const hint = 'No questions loaded. Use the "Load JSON" button or append ?src=yourfile.json to the URL.';
-        qEl.textContent = hint;
-        nextBtn.disabled = true; prevBtn.disabled = true; shuffleBtn.disabled = true; resetBtn.disabled = false;
-      } catch (e) {
-        qEl.textContent = 'Error loading questions. Open console for details (F12) or use Load JSON.';
-        console.error('Boot error:', e);
-      }
-    })();
+    (async()=>{const d=await loadExternalIfAny();if(d){QUIZ=d;render();}else{qEl.textContent='Add ?src=yourfile.json';}})();
   </script>
 </body>
 </html>
